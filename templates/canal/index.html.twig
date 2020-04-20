@@ -1,20 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CanalController!{% endblock %}
+{% block title %}Hello !{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    h1 {
+        text-align: center;
+    }
+    #canals {
+        margin: 1em 10%; font: 18px/1.5 sans-serif;
+        /*border: 1px solid black;*/
+    }
+    .canal {
+        border: 1px solid black;
+        padding: 1em;
+    }
+    .delete_canal {
+        float: right;
+    }
+    #afegir_canal {
+        padding: 1em;
+        border-radius: 1em;
+        background-color: #5eb5e0;
+        margin-top: 1em;
+    }
+    .delete_canal button {
+        padding: 1em;
+        border-radius: 1em;
+        background-color: #fc2003;
+    }
+    /*.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }*/
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/alumne/Code/genis99/symfony_m6/src/Controller/CanalController.php'|file_link(0) }}">src/Controller/CanalController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/alumne/Code/genis99/symfony_m6/templates/canal/index.html.twig'|file_link(0) }}">templates/canal/index.html.twig</a></code></li>
-    </ul>
+<h1>Canals</h1>
+
+<div id="canals">
+
+    {% for canal in canals %}
+        <div class="canal">
+            {{ include('canal/_delete_form.html.twig') }}
+            <h2>{{ canal.name }}</h2>
+            <h3><u>Missatges</u></h3>
+            <ul>
+                {% for missatge in canal.getMissatges %}
+                    <li>
+                        <span>{{ missatge.text }}</span>
+                        <span>
+                            <button>EDIT</button>
+                            <button>DELETE</button>
+                        </span>
+                    </li>
+                    <br>
+                {% endfor %}
+            </ul>
+        </div>
+{#    <p>{{ controller_name.name }}</p>#}
+
+    {% endfor %}
+
+    <button id="afegir_canal">Afegir Canal</button>
+
 </div>
 {% endblock %}
