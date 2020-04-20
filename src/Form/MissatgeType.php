@@ -13,7 +13,6 @@ class MissatgeType extends AbstractType
     {
         $builder
             ->add('text')
-            ->add('canal')
         ;
     }
 

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Missatge{% endblock %}
+
+{% block body %}
+    <h1>Editar Missatge</h1>
+
+    {{ include('missatge/_form.html.twig', {'button_label': 'Actualitza'}) }}
+
+    <a href="{{ path('canals') }}">Tornar als canals</a>
+{% endblock %}

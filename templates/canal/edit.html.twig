@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Canal{% endblock %}
+{% block title %}Editar canal{% endblock %}
 
 {% block body %}
-    <h1>Edit Canal</h1>
+    <h1>Editar canal</h1>
 
-    {{ include('canal/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('canal/_form.html.twig', {'button_label': 'Actualitza'}) }}
 
-    <a href="{{ path('canals') }}">back to list</a>
+    <a href="{{ path('canals') }}">Tornar als canals</a>
 {% endblock %}

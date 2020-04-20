@@ -20,21 +20,18 @@
         border-radius: 1em;
         background-color: #5eb5e0;
     }
-    .edit_canal {
+    button {
         display: inline;
-        padding: 1em;
-        border-radius: 1em;
-        background-color: #8eeffc;
-        float: right;
-        margin-right: 1em;
-        height: 3.5em;
+
     }
-    .delete_canal button {
-        display: inline;
-        padding: 1em;
-        border-radius: 1em;
-        background-color: #fc2003;
-        height: 3.8em;
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.42857;
     }
     /*#save {*/
     /*    background-color: #718C00;*/
@@ -50,7 +47,7 @@
     {% for canal in canals %}
         <div class="canal">
             {{ include('canal/_delete_form.html.twig') }}
-            <a href="{{ path('canal_edit', {'id': canal.id}) }}"><button class="edit_canal">Editar</button></a>
+            <a href="{{ path('canal_edit', {'id': canal.id}) }}"><button style="float: right; margin-right: 0.5em" class="btn btn-primary">Editar</button></a>
             <h2>{{ canal.name }}</h2>
             <h3><u>Missatges</u></h3>
             <ul>
@@ -58,13 +55,14 @@
                     <li>
                         <span>{{ missatge.text }}</span>
                         <span>
-                            <button>EDIT</button>
-                            <button>DELETE</button>
+                            <a href="{{ path('missatge_edit', {'id': missatge.id}) }}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+                            {{ include('missatge/_delete_form.html.twig') }}
                         </span>
                     </li>
                     <br>
                 {% endfor %}
             </ul>
+            <a href="{{ path('missatge_nou', {'id_canal': canal.id}) }}"><button class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></button></a>
         </div>
 {#    <p>{{ controller_name.name }}</p>#}
 

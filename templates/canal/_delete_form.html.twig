@@ -1,5 +1,5 @@
 <form class="delete_canal" method="post" action="{{ path('canal_delete', {'id': canal.id}) }}" onsubmit="return confirm('Estas segur que vols borrar el canal?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ canal.id) }}">
-    <button class="btn">Borrar</button>
+    <button class="btn btn-danger">Borrar</button>
 </form>

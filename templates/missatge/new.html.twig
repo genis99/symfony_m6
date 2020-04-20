@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nou Missatge{% endblock %}
+
+{% block body %}
+    <h1>Crear un nou missatge</h1>
+
+    {{ include('missatge/_form.html.twig') }}
+
+    <a href="{{ path('canals') }}">Tornar als canals</a>
+{% endblock %}

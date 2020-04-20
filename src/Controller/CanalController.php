@@ -25,7 +25,7 @@ class CanalController extends AbstractController
     }
 
     /**
-     * @Route("/nou", name="canal_nou", methods={"GET","POST"})
+     * @Route("/canal/nou", name="canal_nou", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
