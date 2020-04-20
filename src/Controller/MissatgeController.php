@@ -23,7 +23,7 @@ class MissatgeController extends AbstractController
     public function createMissatge()
     {
         $repo_canal = $this->getDoctrine()->getRepository(Canal::class);
-        $canal = $repo_canal->find(5);
+        $canal = $repo_canal->find(2);
 
 
         $message = new Missatge();

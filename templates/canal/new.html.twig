@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Canal{% endblock %}
+{% block title %}Nou Canal{% endblock %}
 
 {% block body %}
-    <h1>Create new Canal</h1>
+    <h1>Crear un nou canal</h1>
 
     {{ include('canal/_form.html.twig') }}
 
-    <a href="{{ path('canal_index') }}">back to list</a>
+    <a href="{{ path('canals') }}">Tornar als canals</a>
 {% endblock %}

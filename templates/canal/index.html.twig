@@ -7,13 +7,10 @@
     h1 {
         text-align: center;
     }
-    #canals {
-        margin: 1em 10%; font: 18px/1.5 sans-serif;
-        /*border: 1px solid black;*/
-    }
     .canal {
         border: 1px solid black;
         padding: 1em;
+        margin-bottom: 1em;
     }
     .delete_canal {
         float: right;
@@ -22,13 +19,26 @@
         padding: 1em;
         border-radius: 1em;
         background-color: #5eb5e0;
-        margin-top: 1em;
+    }
+    .edit_canal {
+        display: inline;
+        padding: 1em;
+        border-radius: 1em;
+        background-color: #8eeffc;
+        float: right;
+        margin-right: 1em;
+        height: 3.5em;
     }
     .delete_canal button {
+        display: inline;
         padding: 1em;
         border-radius: 1em;
         background-color: #fc2003;
+        height: 3.8em;
     }
+    /*#save {*/
+    /*    background-color: #718C00;*/
+    /*}*/
     /*.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }*/
 </style>
 
@@ -40,6 +50,7 @@
     {% for canal in canals %}
         <div class="canal">
             {{ include('canal/_delete_form.html.twig') }}
+            <a href="{{ path('canal_edit', {'id': canal.id}) }}"><button class="edit_canal">Editar</button></a>
             <h2>{{ canal.name }}</h2>
             <h3><u>Missatges</u></h3>
             <ul>
@@ -59,7 +70,7 @@
 
     {% endfor %}
 
-    <button id="afegir_canal">Afegir Canal</button>
+    <a href="{{ path('canal_nou') }}"><button id="afegir_canal">Afegir Canal</button></a>
 
 </div>
 {% endblock %}
