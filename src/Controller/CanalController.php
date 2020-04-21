@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class CanalController extends AbstractController
 {
     /**
-     * @Route("/canals", name="canals")
+     * @Route("/", name="canals")
      */
     public function index()
     {
