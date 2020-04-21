@@ -52,3 +52,9 @@ Ja el podem iniciar
 ```
 symfony server:start
 ```
+
+
+
+
+
+Hi ha dos relacions entre entitats canals-missatges (OneToMany) i canals-categories (ManyToMany). Les categories es veuen fent click damunt del nom del canal.
