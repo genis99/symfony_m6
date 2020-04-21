@@ -55,7 +55,9 @@
 </script>
 
 
-<h1>Canals</h1> <a href="/categories"> Gestionar categories dels canals</a>
+<h1>Canals</h1>
+<a href="{{ path('categories') }}">Gestionar categories dels canals</a>
+<a style="float: right" href="{{ path('info') }}">Info</a>
 
 <div id="canals">
     {% if canals is empty %}

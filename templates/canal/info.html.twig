@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Info{% endblock %}
+
+{% block body %}
+<h2>Benvingut</h2>
+<ul>
+    <li>Pots creal el teu primer canal amb el botó de baix "Afegir canal" :)</li>
+    <li>Un cop tinguis creat el teu canal podràs afegir-li missatges.</li>
+    <li>
+        I per saber de quin tipus de canal es tracta al apartat de dalt "Gestionar categories dels canals" podràs afegir categories per després vincular-les als teus canal.
+        <ul>
+            <li>
+                Per a vincular/desvincular una categoria a un canal fes click a sobre del canal i des d'allí les podràs gestionar.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<div style="margin-top: 1em;"><a href="{{ path('canals') }}">Tornar a canals</a></div>
+{% endblock %}
+

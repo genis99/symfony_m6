@@ -23,6 +23,13 @@ class CanalController extends AbstractController
             'canals' => $canals,
         ]);
     }
+    /**
+     * @Route("/info", name="info")
+     */
+    public function info()
+    {
+        return $this->render('canal/info.html.twig');
+    }
 
     /**
      * @Route("/canal/nou", name="canal_nou", methods={"GET","POST"})
