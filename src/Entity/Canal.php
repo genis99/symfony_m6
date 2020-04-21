@@ -28,9 +28,15 @@ class Canal
      */
     private $missatges;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Categoria", mappedBy="canal")
+     */
+    private $categories;
+
     public function __construct()
     {
         $this->missatges = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +82,34 @@ class Canal
             if ($missatge->getCanal() === $this) {
                 $missatge->setCanal(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Categoria[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categoria $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addCanal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categoria $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+            $category->removeCanal($this);
         }
 
         return $this;

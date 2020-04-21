@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nou Canal{% endblock %}
+
+{% block body %}
+    <h1>Crear una nova categoria</h1>
+
+    {{ include('categoria/_form.html.twig') }}
+
+    <a href="{{ path('categories') }}">Tornar a categories</a>
+{% endblock %}

@@ -33,14 +33,30 @@
         font-size: 12px;
         line-height: 1.42857;
     }
+    .categories {
+        background-color: #718C00;
+        max-width: 20em;
+        height: 10em;
+        display: none;
+    }
+    h4 {
+        padding: 0.5em;
+    }
     /*#save {*/
     /*    background-color: #718C00;*/
     /*}*/
     /*.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }*/
 </style>
 
+<script>
+    function toggle(elem) {
+        if (elem.nextElementSibling.style.display != 'block') elem.nextElementSibling.style.display = 'block';
+        else elem.nextElementSibling.style.display = 'none';
+    }
+</script>
 
-<h1>Canals</h1>
+
+<h1>Canals</h1> <a href="/categories"> Veure categories dels canals</a>
 
 <div id="canals">
 
@@ -48,7 +64,16 @@
         <div class="canal">
             {{ include('canal/_delete_form.html.twig') }}
             <a href="{{ path('canal_edit', {'id': canal.id}) }}"><button style="float: right; margin-right: 0.5em" class="btn btn-primary">Editar</button></a>
-            <h2>{{ canal.name }}</h2>
+            <h2 style="cursor: pointer" onclick="toggle(this)">{{ canal.name }}</h2>
+            <div class="categories">
+                <h4>Categories del canal</h4>
+                <ul>
+                    {% for categoria in canal.getCategories %}
+                        <li>{{ categoria.name }}</li>
+                    {% endfor %}
+                </ul>
+                <a style="display: flex; justify-content: center;" href="{{ path('canal_nou') }}"><button id="">Vincular categoria</button></a>
+            </div>
             <h3><u>Missatges</u></h3>
             <ul>
                 {% for missatge in canal.getMissatges %}

@@ -12,15 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MissatgeController extends AbstractController
 {
-    /**
-     * @Route("/missatge", name="missatge")
-     */
-//    public function index()
-//    {
-//        return $this->render('missatge/index.html.twig', [
-//            'controller_name' => 'MissatgeController',
-//        ]);
-//    }
 
     public function createMissatge()
     {
