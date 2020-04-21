@@ -36,7 +36,6 @@
     .categories {
         background-color: #718C00;
         max-width: 20em;
-        height: 10em;
         display: none;
     }
     h4 {
@@ -56,10 +55,24 @@
 </script>
 
 
-<h1>Canals</h1> <a href="/categories"> Veure categories dels canals</a>
+<h1>Canals</h1> <a href="/categories"> Gestionar categories dels canals</a>
 
 <div id="canals">
-
+    {% if canals is empty %}
+        <h2>Benvingut</h2>
+        <ul>
+            <li>Pots creal el teu primer canal amb el botó de baix "Afegir canal" :)</li>
+            <li>Un cop tinguis creat el teu canal podràs afegir-li missatges.</li>
+            <li>
+                I per saber de quin tipus de canal es tracta al apartat de dalt "Gestionar categories dels canals" podràs afegir categories per després vincular-les als teus canal.
+                <ul>
+                    <li>
+                        Per a vincular/desvincular una categoria a un canal fes click a sobre del canal i des d'allí les podràs gestionar.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    {% endif %}
     {% for canal in canals %}
         <div class="canal">
             {{ include('canal/_delete_form.html.twig') }}
@@ -69,13 +82,16 @@
                 <h4>Categories del canal</h4>
                 <ul>
                     {% for categoria in canal.getCategories %}
-                        <li>{{ categoria.name }}</li>
+                        <li>{{ categoria.name }} <a style="margin-right: 1em; color: red; float: right;" href="{{ path('desv_categoria_canal', {'canal_id': canal.id, 'categoria_id': categoria.id}) }}"><i class="fas fa-trash"></i></a></li>
                     {% endfor %}
                 </ul>
-                <a style="display: flex; justify-content: center;" href="{{ path('canal_nou') }}"><button id="">Vincular categoria</button></a>
+                <a style="display: flex; justify-content: center;" href="{{ path('vincular_categoria', {'canal_id': canal.id}) }}"><button id="">Vincular categoria</button></a>
             </div>
             <h3><u>Missatges</u></h3>
             <ul>
+                {% if canal.getMissatges is empty %}
+                    Aquí pots afegir missatges
+                {% endif %}
                 {% for missatge in canal.getMissatges %}
                     <li>
                         <span>{{ missatge.text }}</span>

@@ -76,6 +76,49 @@ class CategoriaController extends AbstractController
         return $this->redirectToRoute('categories');
     }
 
+    /**
+     * @Route("/vincular/{canal_id}", name="vincular_categoria", methods={"GET","POST"})
+     */
+    public function vincular(Request $request, $canal_id): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Categoria::class);
+        $categories = $repository->findAll();
+        return $this->render('categoria/vincular_categoria.html.twig', [
+            'categories' => $categories,
+            'canal_id' => $canal_id
+        ]);
+    }
+
+    /**
+     * @Route("/vincular/{categoria_id}/{canal_id}", name="categoria_canal", methods={"GET","POST"})
+     */
+    public function vincle_categoria_canal(Request $request, $categoria_id, $canal_id)
+    {
+        $repo_categoria = $this->getDoctrine()->getRepository(Categoria::class);
+        $categoria = $repo_categoria->find($categoria_id);
+        $repo_canal = $this->getDoctrine()->getRepository(Canal::class);
+        $canal = $repo_canal->find($canal_id);
+        $canal->addCategory($categoria);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+        return $this->redirectToRoute('canals');
+    }
+
+    /**
+     * @Route("/desvincular/{categoria_id}/{canal_id}", name="desv_categoria_canal", methods={"GET","POST"})
+     */
+    public function desvincular_categoria_canal(Request $request, $categoria_id, $canal_id)
+    {
+        $repo_categoria = $this->getDoctrine()->getRepository(Categoria::class);
+        $categoria = $repo_categoria->find($categoria_id);
+        $repo_canal = $this->getDoctrine()->getRepository(Canal::class);
+        $canal = $repo_canal->find($canal_id);
+        $canal->removeCategory($categoria);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+        return $this->redirectToRoute('canals');
+    }
+
 //    TODO
 //    /categories on es puguen borrar i afegir categories -> mostra totes les categories
 //    a /canals botó de vincular amb una nova categoria, canviar o esborrar
