@@ -20,7 +20,7 @@ composer install
 Modifiquem el fitxer .env per tindre accés a la BBDD.
 
 ```
-DATABASE_URL=mysql://USUARI:PASSWORD@127.0.0.1:3306/superprova?NOM_BASE_DE_DADES=5.7
+DATABASE_URL=mysql://USUARI:PASSWORD@127.0.0.1:3306/BASE_DE_DADES?serverVersion=5.7
 ```
 
 Si no existeix la BBDD la creem en:
@@ -52,7 +52,3 @@ Ja el podem iniciar
 ```
 symfony server:start
 ```
-
-
-
-L'aplicació està feta a la ruta /canals
